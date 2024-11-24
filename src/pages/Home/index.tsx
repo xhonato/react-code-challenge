@@ -57,8 +57,9 @@ const Home = () => {
           {t("home.sidenote")}
         </Typography>
         <List>
-          {issues.map((issue) => (
-            <ListItem>
+          {issues.map((issue, index) => (
+            // using index as key is not recommended but on this case it's fine because Array order won't change
+            <ListItem key={index}>
               <Typography variant="h5" sx={{ p: 2 }}>
                 {issue.icon}
               </Typography>
