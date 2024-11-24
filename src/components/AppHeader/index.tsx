@@ -43,9 +43,12 @@ const AppHeader = forwardRef<HTMLDivElement, AppHeaderProps>((props, ref) => {
   const countdownSeconds = (countdown % 60).toFixed(0).padStart(2, "0");
 
   useEffect(() => {
-    setInterval(() => {
+    const interval = setInterval(() => {
       setCount((c) => c + 1);
     }, 1000);
+
+     // clear interval - prevents memory leaks
+    return () => clearInterval(interval);
   }, []);
 
   return (
